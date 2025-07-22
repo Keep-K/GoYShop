@@ -1,0 +1,24 @@
+merchant 정보
+keep@DESKTOP-C7DB61E:/mnt/c/Users/wnaak$ spl-token accounts --owner ~/merchant-wallet.json --output json
+{
+  "accounts": [
+    {
+      "address": "EiS5ygyPCJ9TXRMD3gDeghiXsQnaFHCjWBR7aun3xaSE",
+      "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "isAssociated": true,
+      "mint": "9AYqowFKZPpJQia3DuT2q1aV6fX1EQh4x2HotVcp4Ast",
+      "owner": "A5wK9JuKerZKEvDjAGMmbYFJuLEBw4vujLTB64FNQJJx",
+      "tokenAmount": {
+        "uiAmount": 0.0,
+        "decimals": 9,
+        "amount": "0",
+        "uiAmountString": "0"
+      },
+      "state": "initialized",
+      "isNative": false
+    }
+  ]
+}
+
+코인 정보
+9AYqowFKZPpJQia3DuT2q1aV6fX1EQh4x2HotVcp4Ast
