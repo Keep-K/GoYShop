@@ -1,0 +1,277 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Project Setup and Repository Configuration",
+        "description": "Set up the project repository with React and Firebase for the Guardian of Yangtze meme coin promotional website.",
+        "details": "Initialize a new React project using Create React App. Install essential dependencies: react-router-dom (v6.14+) for navigation, styled-components (v6.0+) or Tailwind CSS (v3.3+) for styling, framer-motion (v10.12+) for scroll animations, and ethers.js (v6.7+) for future blockchain integration. Set up Firebase project with necessary services (Authentication, Firestore, Storage, and Hosting). Configure Firebase SDK in the React application. Set up ESLint and Prettier for code quality. Configure the project structure with folders for components, pages, assets, hooks, and services. Initialize Git repository with appropriate .gitignore file. Create a README.md with project description and setup instructions.",
+        "testStrategy": "Verify that the project builds successfully without errors. Test Firebase configuration by connecting to services. Run linting checks to ensure code quality standards. Test that the development server starts correctly and the base application renders. Ensure all dependencies are correctly installed and compatible. Verify Firebase emulators work for local development.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Figma Design Integration and Component Extraction",
+        "description": "Extract and implement UI components from Figma designs for the website, ensuring design fidelity and responsive behavior.",
+        "details": "Use Figma Dev Mode to inspect and manually implement components with exact styling. Create a comprehensive design system with color variables, typography, and reusable components. Implement a global theme provider using styled-components ThemeProvider or Tailwind CSS configuration. Extract all assets (images, icons, animations) from Figma in appropriate formats (SVG preferred for icons, WebP for images with fallbacks). Create responsive breakpoints following mobile-first approach (recommended breakpoints: 640px, 768px, 1024px, 1280px). Implement the scroll-based page transition animations using Intersection Observer API or framer-motion's scroll features. Upload static assets to Firebase Storage for production use.",
+        "testStrategy": "Compare implemented components with Figma designs for visual fidelity. Test responsive behavior across different device sizes. Verify that all assets are loading correctly from Firebase Storage and optimized for web. Ensure animations and transitions match the design specifications. Test loading times for assets from Firebase Storage.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Navigation and Routing Implementation",
+        "description": "Implement the site navigation with Home, Story, CA (Coin Address), and How to Buy sections, with smooth scrolling functionality.",
+        "details": "Use React Router v6.14+ for route management. Implement a fixed or sticky header with navigation links. Create route configurations for each main section: Home, Story, CA, and How to Buy. Implement smooth scrolling functionality using react-scroll (v1.8.9+) or the native scrollIntoView method with smooth behavior. Add active state styling for the current section in the navigation. Implement mobile-responsive navigation with a hamburger menu for smaller screens using a custom implementation. Ensure proper accessibility with aria-labels and keyboard navigation support. Store navigation analytics events in Firebase Analytics.",
+        "testStrategy": "Test navigation links to ensure they direct to the correct sections. Verify smooth scrolling behavior works across different browsers. Test keyboard navigation for accessibility. Ensure the mobile navigation works correctly on various device sizes. Verify that the active section is correctly highlighted in the navigation. Confirm that analytics events are properly recorded in Firebase.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Home Page Implementation with Scroll Transitions",
+        "description": "Develop the main homepage with scroll-based transitions, including the scroll-triggered scroll unrolling animation for the story section.",
+        "details": "Create a visually striking hero section with the Guardian of Yangtze branding and key messaging based on the Figma design. Implement parallax scrolling effects using framer-motion. Develop the scroll-triggered animation where a scroll/parchment unrolls to reveal the story section using framer-motion's scroll animations. Optimize animations for performance using requestAnimationFrame and transform properties. Implement lazy loading for images and content using Intersection Observer API or React.lazy(). Add subtle micro-interactions to enhance user experience. Ensure the page is fully responsive with appropriate breakpoints. Load dynamic content from Firebase Firestore where applicable.",
+        "testStrategy": "Test scroll animations on various devices and browsers to ensure consistent behavior. Measure performance metrics using Lighthouse or WebPageTest. Verify that animations trigger at the correct scroll positions. Test responsiveness across different screen sizes. Ensure accessibility is maintained during animations. Verify that dynamic content loads correctly from Firebase.",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Story Section with Character Profiles",
+        "description": "Implement the story section with character profiles that can be unlocked, including darkened images for locked characters.",
+        "details": "Design a visually appealing layout for the story section with a narrative flow following the Figma design. Create individual character profile components with states for locked and unlocked. Implement the darkening effect for locked characters using CSS filters or overlay elements. Store character unlock status in Firebase Firestore with user authentication. Create engaging transitions for the unlocking animation using framer-motion or CSS animations. Implement a character gallery with information about each character's role in the Guardian of Yangtze story. Add interactive elements to enhance user engagement with the story. Implement real-time updates using Firebase's onSnapshot listeners.",
+        "testStrategy": "Test the locking/unlocking functionality to ensure it works correctly with Firebase. Verify that the visual states for locked and unlocked characters display properly. Test persistence of unlock status across page refreshes and devices. Ensure the layout is responsive and maintains visual appeal on all device sizes. Test keyboard accessibility for interactive elements. Verify real-time updates work when unlock status changes.",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Coin Address (CA) Section Implementation",
+        "description": "Create the Coin Address section displaying the token contract address with copy functionality and relevant blockchain information.",
+        "details": "Design a clean, informative section displaying the GoY token contract address according to the Figma design. Implement a one-click copy button using the Clipboard API. Add blockchain explorer links (Etherscan, BscScan, etc. depending on the blockchain used). Display key token metrics such as total supply, circulating supply, and market cap if available. Include token distribution information with visual charts using Chart.js (v4.3+). Add a QR code for the contract address using react-qr-code (v2.0.11+). Implement proper error handling for clipboard operations and data fetching. Store token metrics in Firebase Firestore for easy updates by administrators.",
+        "testStrategy": "Test the copy functionality across different browsers. Verify that blockchain explorer links open correctly. Ensure the contract address is displayed correctly and completely. Test responsiveness of charts and information displays. Verify that the QR code scans correctly to the proper address. Test that data updates in Firebase Firestore are reflected in the UI.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "How to Buy Section Implementation",
+        "description": "Develop the How to Buy section with step-by-step instructions for purchasing the GoY token.",
+        "details": "Create a clear, step-by-step guide for purchasing the GoY token following the Figma design. Include visual instructions with icons or illustrations for each step. Implement an interactive stepper component using a custom implementation aligned with the design system. Cover wallet setup (MetaMask, Trust Wallet, etc.), exchange navigation, and swap process. Add direct links to exchanges where the token is listed. Include information about slippage settings and gas fees. Provide troubleshooting tips for common issues. Make the instructions adaptable based on the user's device (different instructions for mobile vs desktop). Store instruction content in Firebase Firestore to allow for easy updates without code changes.",
+        "testStrategy": "Verify that all steps are clearly explained and logically ordered. Test all external links to ensure they direct to the correct destinations. Ensure the instructions are accurate and up-to-date with current exchange interfaces. Test the responsive behavior of the stepper component. Gather feedback from users unfamiliar with crypto to ensure clarity. Verify that content updates in Firebase are reflected in the UI.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Twitter Feed Integration",
+        "description": "Integrate a Twitter feed to display recent posts related to the Guardian of Yangtze project.",
+        "details": "Implement Twitter timeline integration using react-twitter-embed (v4.0.4+) or the Twitter API v2 with a custom component. Create a visually appealing feed layout that matches the Figma design. Implement filtering to show only relevant hashtags or accounts. Add lazy loading for the Twitter feed to improve performance. Implement error handling for API failures or content loading issues. Create a fallback UI for when Twitter content cannot be loaded. Ensure the feed is responsive and properly sized on all devices. Consider adding a 'load more' button for viewing additional tweets. Use Firebase Functions to create a proxy for Twitter API calls to protect API keys.",
+        "testStrategy": "Test the Twitter feed loading and display across different browsers. Verify that tweets are properly filtered to show relevant content. Test error scenarios by simulating API failures. Ensure the feed is responsive and visually consistent with the rest of the site. Verify that lazy loading works correctly. Test the Firebase Function proxy for reliability and performance.",
+        "priority": "low",
+        "dependencies": [
+          3,
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "User Authentication System",
+        "description": "Implement user account creation, login functionality, and wallet connection for the GoY token holders.",
+        "details": "Set up Firebase Authentication for user management. Implement email/password authentication with proper validation. Add social login options (Google, Twitter, etc.) for convenience. Integrate Web3 wallet connection using web3-react (v8.2+) or wagmi (v1.3+) libraries. Implement wallet connection for multiple providers (MetaMask, WalletConnect, Coinbase Wallet). Create secure authentication flows with proper error handling. Develop user profile pages with account settings. Implement token balance checking against the GoY contract to verify holder status. Store authentication state using React Context API or Redux. Save user profiles and preferences in Firebase Firestore.",
+        "testStrategy": "Test user registration and login flows for all authentication methods. Verify wallet connection works with different providers. Test error handling for invalid credentials or connection failures. Ensure token balance checking correctly identifies holders. Verify that authenticated state persists appropriately across page refreshes. Test security measures like password strength requirements and account recovery. Verify that user data is correctly stored and retrieved from Firebase Firestore.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          6
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Firebase Project Setup and Configuration",
+            "description": "Create and configure a Firebase project with Authentication service enabled for the GoY platform",
+            "dependencies": [],
+            "details": "Create a new Firebase project in the Firebase console. Enable Authentication service in the project. Configure authentication methods including Email/Password, Google, and Twitter. Set up security rules for the authentication service. Install and integrate Firebase SDK into the React application. Configure environment variables for Firebase credentials.\n<info added on 2025-07-22T04:13:23.225Z>\nFirebase project setup completed:\n- Firebase SDK installation completed (npm install firebase)\n- Firebase CLI installation completed (npm install -g firebase-tools)\n- Created src/firebase.js configuration file\n- Authentication services activated in Firebase console:\n  - Email/Password login enabled\n  - Google login enabled\n  - Twitter login will be configured later\n\nNext step: Implement Email/Password authentication functionality\n</info added on 2025-07-22T04:13:23.225Z>",
+            "status": "done",
+            "testStrategy": "Verify Firebase project is properly created and accessible. Confirm all required authentication methods are enabled. Test Firebase SDK integration by checking console for successful initialization."
+          },
+          {
+            "id": 2,
+            "title": "Email/Password Authentication Implementation",
+            "description": "Implement email and password authentication with validation, registration, login, and password reset functionality",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "Create registration form with email and password fields. Implement client-side validation for email format and password strength. Develop server-side validation using Firebase Authentication. Create login form with proper error handling. Implement password reset functionality. Create protected routes that require authentication. Store authentication state using React Context API.",
+            "status": "pending",
+            "testStrategy": "Test user registration with valid and invalid inputs. Verify login functionality with correct and incorrect credentials. Test password reset flow. Ensure protected routes redirect unauthenticated users appropriately."
+          },
+          {
+            "id": 3,
+            "title": "Social Login Integration",
+            "description": "Implement social login options including Google and Twitter authentication methods",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "Create UI components for social login buttons following the design. Implement Google authentication using Firebase Authentication. Implement Twitter authentication using Firebase Authentication. Handle user profile data from social providers. Merge accounts if a user signs up with multiple methods. Implement proper error handling for social authentication failures.",
+            "status": "pending",
+            "testStrategy": "Test social login flows with Google and Twitter accounts. Verify user profile information is correctly retrieved from social providers. Test error scenarios such as canceled authentication or network issues."
+          },
+          {
+            "id": 4,
+            "title": "Web3 Wallet Connection Integration",
+            "description": "Implement Web3 wallet connection functionality for multiple providers using wagmi or web3-react libraries",
+            "dependencies": [
+              "9.1",
+              "9.2"
+            ],
+            "details": "Install and configure wagmi (v1.3+) or web3-react (v8.2+) library. Implement wallet connection for MetaMask provider. Add support for WalletConnect provider. Integrate Coinbase Wallet connection. Create a unified interface for managing wallet connections. Implement proper error handling for connection failures. Store wallet connection state in the application.",
+            "status": "pending",
+            "testStrategy": "Test wallet connection with different providers (MetaMask, WalletConnect, Coinbase Wallet). Verify connection state persists across page refreshes. Test error handling for scenarios like rejected connections or network changes."
+          },
+          {
+            "id": 5,
+            "title": "User Profile and Token Verification",
+            "description": "Develop user profile pages with account settings and implement GoY token balance verification",
+            "dependencies": [
+              "9.2",
+              "9.3",
+              "9.4"
+            ],
+            "details": "Create user profile page with account information display. Implement account settings functionality (update profile, change password). Connect to GoY token contract to verify holder status. Implement token balance checking against the contract. Store user profiles and preferences in Firebase Firestore. Create UI components to display token holder status. Implement proper error handling for token verification failures.",
+            "status": "pending",
+            "testStrategy": "Test user profile data display and editing functionality. Verify token balance checking correctly identifies holders vs. non-holders. Test persistence of user preferences in Firestore. Ensure proper error handling when token contract is unavailable."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Voting System for Token Holders",
+        "description": "Implement a voting system that allows GoY token holders to participate in community polls and decisions.",
+        "details": "Create a voting interface with active and past proposals according to the Figma design. Implement token-gated access using the user's verified GoY balance. Develop the voting mechanism with options for different voting types (single choice, multiple choice, etc.). Integrate with Firebase Firestore to store voting data. Implement real-time vote counting and results display using Firestore onSnapshot listeners. Add vote verification to prevent duplicate voting. Create an admin interface for creating new proposals (to be restricted to authorized users). Display voting power based on token holdings. Implement vote delegation functionality for future governance features. Use Firebase Security Rules to ensure data integrity.",
+        "testStrategy": "Test token-gating to ensure only verified holders can vote. Verify that votes are correctly recorded and counted in Firestore. Test for duplicate vote prevention. Ensure real-time updates work correctly with Firestore listeners. Test the admin interface for creating proposals. Verify that voting power calculation is accurate based on token holdings. Test the system under load with multiple simultaneous voters. Verify that Firebase Security Rules properly protect voting data.",
+        "priority": "medium",
+        "dependencies": [
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "In-Website Token Swap Integration",
+        "description": "Implement functionality for users to buy and sell GoY tokens directly within the website.",
+        "details": "Integrate with decentralized exchange protocols like Uniswap (v3) or PancakeSwap using their SDK. Implement a swap interface with token selection, amount input, and price impact display according to the Figma design. Add slippage tolerance settings and transaction deadline options. Implement real-time price fetching from the DEX. Create transaction confirmation modals with gas estimation. Implement transaction status tracking and history. Add support for multiple blockchain networks if the token exists on several chains. Implement proper error handling for failed transactions. Add a simple chart showing recent price history using lightweight-charts (v4.0+). Store transaction history in Firebase Firestore for user reference.",
+        "testStrategy": "Test the swap functionality with small amounts on testnets before mainnet. Verify price fetching accuracy against external sources. Test slippage protection and deadline functionality. Ensure transaction status is correctly tracked and displayed. Test error scenarios like insufficient balance or rejected transactions. Verify the interface works correctly across different devices and browsers. Test that transaction history is correctly stored and retrieved from Firebase.",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Randomized Character Profile Picture Generator",
+        "description": "Develop a feature that allows users to create profile pictures by randomly combining character parts from the Guardian of Yangtze universe.",
+        "details": "Create a library of character parts (heads, bodies, accessories, etc.) as separate SVG or PNG assets based on the Figma design. Implement a canvas-based composition system using fabric.js (v5.3+) or HTML5 Canvas API. Develop the randomization algorithm for selecting and combining parts. Create a user interface for triggering randomization and saving the result. Implement manual customization options for users to select specific parts. Add the ability to save the generated profile picture as an image file. Implement a preview feature to see the profile picture at different sizes. Consider adding special or rare parts that can be unlocked through specific actions. Store user-generated profile pictures in Firebase Storage and link to user profiles in Firestore.",
+        "testStrategy": "Test the randomization algorithm to ensure it produces varied results. Verify that all character parts combine correctly without visual glitches. Test the image saving functionality across different browsers. Ensure the UI is intuitive and responsive. Test performance with a large number of parts and combinations. Verify that the generated images maintain quality at different resolutions. Test uploading to Firebase Storage and retrieving images.",
+        "priority": "low",
+        "dependencies": [
+          5,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Content Management System for Updates",
+        "description": "Implement a CMS functionality to allow administrators to post updates and new content to the website.",
+        "details": "Set up a custom CMS solution with Firebase Firestore for content storage. Create content models for different types of posts (news, updates, events). Implement an admin interface for creating, editing, and publishing content. Add rich text editing capabilities using a library like Draft.js (v0.11+) or Quill (v1.3+). Implement media uploads for images and videos to Firebase Storage. Create a public-facing blog or news section to display the content. Implement content categorization and tagging. Add search functionality for finding specific posts. Implement scheduled publishing for future-dated content using Firebase Functions. Set up Firebase Security Rules to restrict CMS access to administrators only.",
+        "testStrategy": "Test the content creation and editing workflow from the admin perspective. Verify that published content appears correctly on the public site. Test media uploads with various file types and sizes to Firebase Storage. Ensure rich text formatting is preserved when displayed. Test search functionality with various queries. Verify that scheduled content appears at the correct time. Test the CMS performance with a large number of posts. Verify that Firebase Security Rules correctly restrict access to authorized users only.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Token-Based Game Foundation",
+        "description": "Develop the foundation for a token-based game with ranking system as specified in the later-stage requirements.",
+        "details": "Design the core game mechanics that integrate with the GoY token ecosystem. Implement a basic game engine using Phaser.js (v3.60+) or a similar HTML5 game framework. Create player profiles with stats tracking and progression. Implement a ranking system with leaderboards using Firebase Realtime Database for real-time updates. Design the token integration for game actions and rewards. Create the UI for game interactions and status display according to the Figma design. Implement basic animations and visual effects for game elements. Design the database schema for storing game state and player progress in Firebase. Plan for future character enhancement features mentioned in the PRD. Use Firebase Authentication to link game profiles to user accounts.",
+        "testStrategy": "Test core game mechanics for fun factor and engagement. Verify that the ranking system correctly tracks and displays player standings in real-time with Firebase. Test token integration with mock transactions before implementing real ones. Ensure the game performs well across different devices and browsers. Test database operations for storing and retrieving game state from Firebase. Verify that the UI is intuitive and responsive during gameplay. Test authentication integration to ensure game progress is linked to the correct user accounts.",
+        "priority": "low",
+        "dependencies": [
+          9,
+          10
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Deployment and Performance Optimization",
+        "description": "Deploy the website to production and optimize performance, SEO, and user experience.",
+        "details": "Set up CI/CD pipeline using GitHub Actions for automated deployment to Firebase Hosting. Configure production builds with code splitting and tree shaking. Implement caching strategies for static assets and API responses. Set up Firebase Hosting with a CDN for global content delivery. Optimize images and assets using WebP format and proper sizing. Implement lazy loading for off-screen content. Add SEO metadata, Open Graph tags, and Twitter cards. Set up analytics using Firebase Analytics. Implement error tracking with Firebase Crashlytics. Perform accessibility audits and fixes using axe-core (v4.7+). Create a sitemap.xml and robots.txt file. Test and optimize Core Web Vitals (LCP, FID, CLS). Configure Firebase Performance Monitoring to track key metrics.",
+        "testStrategy": "Run Lighthouse audits to measure performance, accessibility, SEO, and best practices. Test loading times from different geographic locations using Firebase Hosting's global CDN. Verify that analytics are correctly tracking user interactions in Firebase Analytics. Test error tracking by triggering known error conditions and checking Crashlytics. Ensure the website is accessible according to WCAG 2.1 AA standards. Verify that SEO metadata is correctly implemented and visible to crawlers. Monitor performance metrics in Firebase Performance Monitoring dashboard.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-22T03:56:03.843Z",
+      "updated": "2025-07-22T04:13:26.217Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
