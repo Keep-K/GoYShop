@@ -44,7 +44,7 @@ const Navbar = () => {
           {currentUser ? (
             <>
               <li className="nav-item">
-                <Link to="/purchases" className={isActive('/purchases')}>
+                <Link to="/purchase-history" className={isActive('/purchases')}>
                   구매내역
                 </Link>
               </li>

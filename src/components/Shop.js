@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { productService, walletService } from '../services/database';
+import { productService, walletService, purchaseService } from '../services/database';
 import PaymentModal from './PaymentModal';
 import { useAuth } from '../contexts/AuthContext';
 import { Connection, PublicKey } from '@solana/web3.js';
@@ -90,7 +90,25 @@ const Shop = () => {
   };
 
   // 결제 완료 후
-  const handlePaymentSuccess = (txHash) => {
+  const handlePaymentSuccess = async (txHash) => {
+    const purchase = {
+      userId: currentUser.uid,
+      userEmail: currentUser.email,
+      productId: selectedProduct.id,
+      productName: selectedProduct.name,
+      price: selectedProduct.price,
+      mint: GUARDIAN_MINT,
+      txHash,
+      buyerInfo,
+      createdAt: new Date().toISOString()
+    };
+  
+    try {
+      await purchaseService.createPurchase(purchase);
+    } catch (e) {
+      console.error('구매 내역 저장 실패:', e);
+    }
+  
     setTxHash(txHash);
     setPaymentSuccess(true);
     setShowPaymentModal(false);

@@ -301,6 +301,16 @@ export const purchaseService = {
       console.error('구매 상태 업데이트 오류:', error);
       throw error;
     }
+  },
+
+  async getPurchasesByUser(userId) {
+    const q = query(
+      collection(db, 'purchases'),
+      where('userId', '==', userId),
+      orderBy('createdAt', 'desc')
+    );
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }
 };
 
